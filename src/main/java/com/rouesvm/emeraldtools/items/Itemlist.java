@@ -1,8 +1,5 @@
 package com.rouesvm.emeraldtools.items;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.ToolMaterials;
 import org.geysermc.geyser.api.event.lifecycle.GeyserDefineCustomItemsEvent;
 
 public class Itemlist {

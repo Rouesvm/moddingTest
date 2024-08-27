@@ -1,0 +1,11 @@
+{
+	"required": false,
+	"package": "com.rouesvm.emeraldtools.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"ClientMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

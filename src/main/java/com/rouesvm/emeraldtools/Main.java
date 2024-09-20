@@ -28,6 +28,7 @@ public class Main implements ModInitializer, EventRegistrar {
 	@Subscribe
 	public void onGeyserDefineCustomItems(GeyserDefineCustomItemsEvent event) {
 		ItemList.defineGeyserItems(event);
+		BlockList.defineGeyserBlockItems(event);
 	}
 
 	@Subscribe

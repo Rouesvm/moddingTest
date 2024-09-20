@@ -7,17 +7,19 @@ import eu.pb4.polymer.core.api.utils.PolymerKeepModel;
 import eu.pb4.polymer.resourcepack.api.PolymerModelData;
 import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
 import net.minecraft.item.*;
+import net.minecraft.registry.BuiltinRegistries;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
+import org.geysermc.geyser.api.event.lifecycle.GeyserDefineCustomItemsEvent;
 import org.geysermc.geyser.api.item.custom.NonVanillaCustomItemData;
 import org.jetbrains.annotations.Nullable;
 
 public class GenericItem implements PolymerItem, PolymerKeepModel, PolymerClientDecoded {
 
     private final Item moddedItem;
-    private final String id;
+    private final Identifier id;
 
     private final PolymerModelData model;
 
@@ -34,23 +36,21 @@ public class GenericItem implements PolymerItem, PolymerKeepModel, PolymerClient
     public GenericItem(String id) {
         Item.Settings settings = new Item.Settings();
 
-        this.id = id;
-        this.moddedItem = Registry.register(Registries.ITEM, getIdentifier(), new Item(settings));
+        this.id = Identifier.of(Main.MOD_ID, id);
+        this.moddedItem = Registry.register(Registries.ITEM, this.id, new Item(settings));
 
-        this.model = PolymerResourcePackUtils.requestModel(Items.LEAD, Identifier.of(Main.MOD_ID, "item/" + getIdentifier().getPath()));
+        this.model = PolymerResourcePackUtils.requestModel(Items.LEAD, Identifier.of(Main.MOD_ID, "item/" + this.id.getPath()));
     }
 
-    public Identifier getIdentifier() {
-        return Identifier.of(Main.MOD_ID, this.id);
-    }
-
-    public final NonVanillaCustomItemData getGeyserItem() {
-        return NonVanillaCustomItemData.builder()
-                .name(id)
-                .identifier(Main.NEW_ID + id)
-                .javaId(Registries.ITEM.getRawId(moddedItem))
+    public void registerItem(GeyserDefineCustomItemsEvent event) {
+        NonVanillaCustomItemData customItemData = NonVanillaCustomItemData.builder()
+                .name(this.id.getPath())
+                .identifier(this.id.getNamespace())
+                .javaId(Registries.ITEM.getRawId(this.moddedItem))
                 .creativeCategory(1)
                 .build();
+
+        event.register(customItemData);
     }
 }
 

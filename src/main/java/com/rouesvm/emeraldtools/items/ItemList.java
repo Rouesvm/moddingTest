@@ -6,7 +6,7 @@ public class ItemList {
     public static final GenericItem A_ITEM = new GenericItem("item");
 
     public static void defineGeyserItems(GeyserDefineCustomItemsEvent event) {
-        event.register(A_ITEM.getGeyserItem());
+        A_ITEM.registerItem(event);
     }
 
     public static void initialize() {}

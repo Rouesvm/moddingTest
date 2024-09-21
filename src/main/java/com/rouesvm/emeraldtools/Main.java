@@ -13,7 +13,6 @@ import org.geysermc.geyser.api.event.lifecycle.GeyserDefineCustomItemsEvent;
 public class Main implements ModInitializer, EventRegistrar {
 
 	public static final String MOD_ID = "emeraldtools";
-	public static final String NEW_ID = MOD_ID + ":";
 
 	@Override
 	public void onInitialize() {

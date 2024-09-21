@@ -1,3 +1,4 @@
 {
-  "item.extralent.custom_item": "Custom Item"
+  "item.extralent.item": "Custom Item",
+  "block.extralent.block": "Custom Block"
 }

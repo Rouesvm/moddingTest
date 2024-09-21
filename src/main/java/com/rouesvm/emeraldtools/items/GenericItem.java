@@ -7,7 +7,6 @@ import eu.pb4.polymer.core.api.utils.PolymerKeepModel;
 import eu.pb4.polymer.resourcepack.api.PolymerModelData;
 import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
 import net.minecraft.item.*;
-import net.minecraft.registry.BuiltinRegistries;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -18,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class GenericItem implements PolymerItem, PolymerKeepModel, PolymerClientDecoded {
 
-    private final Item moddedItem;
+    private final Item item;
     private final Identifier id;
 
     private final PolymerModelData model;
@@ -37,7 +36,7 @@ public class GenericItem implements PolymerItem, PolymerKeepModel, PolymerClient
         Item.Settings settings = new Item.Settings();
 
         this.id = Identifier.of(Main.MOD_ID, id);
-        this.moddedItem = Registry.register(Registries.ITEM, this.id, new Item(settings));
+        this.item = Registry.register(Registries.ITEM, this.id, new Item(settings));
 
         this.model = PolymerResourcePackUtils.requestModel(Items.LEAD, Identifier.of(Main.MOD_ID, "item/" + this.id.getPath()));
     }
@@ -45,8 +44,8 @@ public class GenericItem implements PolymerItem, PolymerKeepModel, PolymerClient
     public void registerItem(GeyserDefineCustomItemsEvent event) {
         NonVanillaCustomItemData customItemData = NonVanillaCustomItemData.builder()
                 .name(this.id.getPath())
-                .identifier(this.id.getNamespace())
-                .javaId(Registries.ITEM.getRawId(this.moddedItem))
+                .identifier(this.id.toString())
+                .javaId(Registries.ITEM.getRawId(this.item))
                 .creativeCategory(1)
                 .build();
 

@@ -5,7 +5,7 @@
 	"name": "emeraldtools",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"Rouesvm"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -17,18 +17,9 @@
 	"entrypoints": {
 		"main": [
 			"com.rouesvm.emeraldtools.Main"
-		],
-		"client": [
-			"com.rouesvm.emeraldtools.Client"
 		]
 	},
-	"mixins": [
-      "emeraldtools.mixins.json",
-		{
-			"config": "emeraldtools.client.mixins.json",
-			"environment": "client"
-		}
-	],
+	"mixins": [],
 	"depends": {
 		"fabricloader": ">=0.16.3",
 		"minecraft": "~1.21",

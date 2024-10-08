@@ -1,8 +1,5 @@
 package com.rouesvm.emeraldtools.blocks;
 
-import com.rouesvm.emeraldtools.items.GenericItem;
-import org.geysermc.geyser.api.block.custom.NonVanillaCustomBlockData;
-import org.geysermc.geyser.api.block.custom.nonvanilla.JavaBlockState;
 import org.geysermc.geyser.api.event.lifecycle.GeyserDefineCustomBlocksEvent;
 import org.geysermc.geyser.api.event.lifecycle.GeyserDefineCustomItemsEvent;
 
